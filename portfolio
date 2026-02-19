@@ -1,0 +1,569 @@
+import React, { useState, useEffect } from 'react';
+import { ChevronLeft, ChevronRight, Play, Instagram, Menu, Target, Lightbulb, Users, Brain, Layers, ArrowUpRight, Sparkles, Zap, Quote, Search, PencilRuler, Rocket, Eye, Compass, MessageSquare, PenTool, BarChart3, Puzzle, ExternalLink, MessageCircle } from 'lucide-react';
+
+const App = () => {
+  const [activeCategory, setActiveCategory] = useState('Semua');
+  const [isVisible, setIsVisible] = useState(false);
+
+  useEffect(() => {
+    setIsVisible(true);
+  }, []);
+
+  const colors = {
+    neonGreen: '#89c82c',
+    brightBlue: '#4cc9f0',
+    magenta: '#f72585',
+    mustard: '#ffb703',
+    deepBlack: '#000000',
+    paper: '#f9f7f2',
+    creamBox: '#fffbeb'
+  };
+
+  const whatsappUrl = "https://wa.me/6282112347173?text=Halo%20Trivium%20Creatives!%20Saya%20tertarik%20untuk%20konsultasi%20mengenai%20layanan%20kreatif.";
+
+  const categories = ['Semua', 'Branding', 'Visual', 'Strategi'];
+
+  const portfolioItems = [
+    { 
+      id: 1, 
+      name: 'Creative Calendar 2014', 
+      category: 'Visual',
+      accent: colors.magenta, 
+      img: 'https://i.postimg.cc/PqRFXCkD/calendar.jpg',
+      desc: 'Desain kalender korporat dengan estetika minimalis dan tipografi yang bersih.'
+    },
+    { 
+      id: 2, 
+      name: 'Allianz Brand Identity', 
+      category: 'Branding',
+      accent: colors.neonGreen, 
+      img: 'https://i.postimg.cc/YSZbcT6K/allianz.jpg',
+      desc: 'Penyelarasan identitas visual untuk meningkatkan profesionalisme dan kepercayaan merek.'
+    },
+    { 
+      id: 3, 
+      name: 'Strategic Proposal Design', 
+      category: 'Strategi',
+      accent: colors.mustard, 
+      img: 'https://i.postimg.cc/SxKrnmdd/proposa-RSl.jpg',
+      desc: 'Pengembangan dokumen strategi yang komunikatif untuk presentasi profil tinggi.'
+    },
+    { 
+      id: 4, 
+      name: 'Premium Brochure Layout', 
+      category: 'Visual',
+      accent: colors.brightBlue, 
+      img: 'https://i.postimg.cc/SscLBRQS/Free-A4-Brochure-Mockup-1.jpg',
+      desc: 'Tata letak brosur A4 yang bersih dan berfokus pada penyampaian informasi yang efektif.'
+    },
+    { 
+      id: 5, 
+      name: 'Product Packaging Concept', 
+      category: 'Branding',
+      accent: colors.magenta, 
+      img: 'https://i.postimg.cc/T1Gjfxp8/packaging.jpg',
+      desc: 'Eksplorasi pengemasan produk yang menonjolkan nilai unik dan daya tarik di rak penjualan.'
+    },
+    { 
+      id: 6, 
+      name: 'Digital Acquisition Banner', 
+      category: 'Strategi',
+      accent: colors.neonGreen, 
+      img: 'https://i.postimg.cc/wj3X60Tx/FB-acuisition-banner.jpg',
+      desc: 'Desain iklan digital berstrategi untuk meningkatkan tingkat konversi (conversion rate).'
+    },
+  ];
+
+  const filteredPortfolio = activeCategory === 'Semua' 
+    ? portfolioItems 
+    : portfolioItems.filter(item => item.category === activeCategory);
+
+  const methods = [
+    {
+      step: "01",
+      icon: Eye,
+      title: "Memahami Pola Pikir",
+      desc: "Kami memulai dengan menggali emosi, motivasi, dan pola perilaku audiens sasaran Anda melalui lensa psikologi komunikasi.",
+      tags: ["Psikologi", "Empati", "Audiens"],
+      color: colors.magenta
+    },
+    {
+      step: "02",
+      icon: Compass,
+      title: "Membedah Brand",
+      desc: "Kami membedah brand Anda secara strategis and objektif untuk memperjelas visi serta nada suara brand (tone of voice).",
+      tags: ["Audit", "Nilai", "Nada Suara"],
+      color: colors.mustard
+    },
+    {
+      step: "03",
+      icon: MessageSquare,
+      title: "Merumuskan Strategi",
+      desc: "Dengan landasan pendekatan psikologi yang kuat, kami membangun blueprint strategi komunikasi yang jelas.",
+      tags: ["Pesan", "Funnel", "Rencana"],
+      color: colors.brightBlue
+    },
+    {
+      step: "04",
+      icon: Lightbulb,
+      title: "Merangkai Ide",
+      desc: "Ide inti dibentuk menjadi satu konsep sentral yang menjadi jangkar bagi keseluruhan kampanye Anda.",
+      tags: ["Ide Utama", "Cerita", "Daya Tarik"],
+      color: colors.brightBlue
+    },
+    {
+      step: "05",
+      icon: PenTool,
+      title: "Merancang Dampak",
+      desc: "Kami menerjemahkan strategi ke dalam visual dan pengalaman pengguna yang menarik dengan detail yang terencana.",
+      tags: ["Visual", "Motion", "Copywriting"],
+      color: colors.mustard
+    },
+    {
+      step: "06",
+      icon: BarChart3,
+      title: "Menggerakkan & Menyempurnakan",
+      desc: "Setelah peluncuran, kami memantau umpan balik audiens dan terus melakukan penyempurnaan secara adaptif.",
+      tags: ["Review", "Respons", "Adaptif"],
+      color: colors.magenta
+    }
+  ];
+
+  return (
+    <div className="min-h-screen text-gray-800 bg-[#f9f7f2] selection:bg-yellow-200 overflow-x-hidden relative" style={{ fontFamily: '"Dosis", sans-serif' }}>
+      <style>
+        {`
+          @import url('https://fonts.googleapis.com/css2?family=Dosis:wght@300;500;700;800&family=Montserrat:wght@300;400;600&display=swap');
+          .font-title { font-family: 'Dosis', sans-serif; font-weight: 800; }
+          .font-body { font-family: 'Montserrat', sans-serif; font-weight: 400; }
+          
+          .no-split { white-space: nowrap; display: inline-block; }
+
+          .bg-pattern {
+            background-image: 
+              linear-gradient(to right, rgba(137, 200, 44, 0.05) 1px, transparent 1px),
+              linear-gradient(to bottom, rgba(255, 183, 3, 0.05) 1px, transparent 1px);
+            background-size: 60px 60px;
+          }
+
+          .box-reveal {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+          }
+          .box-reveal.visible {
+            opacity: 1;
+            transform: translateY(0);
+          }
+
+          @keyframes float {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-15px) rotate(2deg); }
+          }
+          .animate-float { animation: float 6s ease-in-out infinite; }
+
+          .bg-dots {
+            background-image: radial-gradient(#89c82c 1px, transparent 1px);
+            background-size: 20px 20px;
+          }
+
+          .line-accents {
+            background: repeating-linear-gradient(45deg, transparent, transparent 10px, rgba(137, 200, 44, 0.1) 10px, rgba(137, 200, 44, 0.1) 11px);
+          }
+
+          @keyframes lineGrow {
+            0% { width: 0%; }
+            100% { width: 100%; }
+          }
+          .animate-line-grow {
+            animation: lineGrow 1.5s cubic-bezier(0.65, 0, 0.35, 1) forwards;
+          }
+
+          .method-card {
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+          }
+          .method-card:hover {
+            transform: translateY(-12px) scale(1.02);
+          }
+          .icon-container {
+            transition: all 0.4s ease;
+          }
+          .method-card:hover .icon-container {
+            transform: scale(1.1) rotate(-5deg);
+            box-shadow: 0 10px 25px -5px rgba(0,0,0,0.1);
+          }
+          .method-card .step-number {
+             transition: all 0.4s ease;
+          }
+          .method-card:hover .step-number {
+            transform: scale(1.2) rotate(10deg);
+            filter: brightness(1.1);
+          }
+          
+          .portfolio-item:hover .portfolio-overlay {
+            opacity: 1;
+          }
+        `}
+      </style>
+
+      <div className="fixed inset-0 bg-pattern pointer-events-none z-0"></div>
+
+      <header className="pt-8 px-6 md:px-10 flex justify-between items-center sticky top-0 bg-[#f9f7f2]/90 backdrop-blur-md z-40 border-b-2 border-yellow-400/20">
+        <div className="py-2 group cursor-pointer transition-transform hover:scale-105 duration-300 relative z-50">
+            <img 
+              src="https://i.postimg.cc/7PpGgmmh/trivium-logo.png" 
+              alt="Logo Trivium" 
+              className="h-10 md:h-16 w-auto object-contain"
+            />
+        </div>
+
+        <div className="hidden md:flex gap-8 font-title text-sm uppercase tracking-widest items-center relative z-50">
+          <a href="#portfolio" className="hover:text-green-600 transition-colors border-b-2 border-transparent hover:border-green-400">Portfolio</a>
+          <a href="#tentang" className="hover:text-yellow-600 transition-colors border-b-2 border-transparent hover:border-yellow-400">Tentang</a>
+          <a href="#metode" className="hover:text-blue-600 transition-colors border-b-2 border-transparent hover:border-blue-400">Metode</a>
+          <a 
+            href={whatsappUrl} 
+            target="_blank" 
+            rel="noopener noreferrer" 
+            className="text-white px-6 py-2 rounded-full transition-all shadow-lg hover:shadow-xl hover:scale-105" 
+            style={{ backgroundColor: colors.deepBlack }}
+          >
+            Hubungi Kami
+          </a>
+        </div>
+        <button className="md:hidden p-2 text-black relative z-50">
+          <Menu size={24} />
+        </button>
+      </header>
+
+      <main className="relative z-20">
+        {/* Section 1: Hero */}
+        <section className="relative min-h-[80vh] flex items-center justify-center overflow-hidden">
+          <div className="absolute inset-0 z-0">
+             <img 
+               src="https://i.postimg.cc/nhxjC214/shutterstock-2443279739-(1)-Converted-01-01.png" 
+               className="w-full h-full object-cover" 
+               alt="Latar Belakang Hero"
+             />
+             <div className="absolute inset-0 bg-white/5"></div>
+          </div>
+
+          <div className="relative z-10 px-6 md:px-10 py-16 md:py-24 flex flex-col md:flex-row items-center justify-between max-w-7xl mx-auto gap-8 md:gap-12 w-full">
+            <div className="z-10 w-full md:w-1/2 flex justify-center order-2 md:order-1 mt-8 md:mt-0">
+              <div className="relative animate-float w-full max-w-[500px]">
+                <div className="relative group overflow-hidden rounded-2xl shadow-2xl">
+                  <div className="absolute inset-0 bg-gradient-to-br from-green-400 via-yellow-300 to-pink-500 rounded-2xl blur opacity-20 group-hover:opacity-40 transition-opacity"></div>
+                  <img 
+                    src="https://i.postimg.cc/636WVGv3/Whats-App-Image-2026-02-19-at-12-45.png" 
+                    className="w-full relative z-10 transform hover:scale-[1.02] transition-all duration-700 drop-shadow-2xl rounded-2xl border-2 md:border-4" 
+                    style={{ borderColor: colors.mustard }}
+                    alt="Karya Kreatif" 
+                  />
+                </div>
+              </div>
+            </div>
+
+            <div className="w-full md:w-1/2 text-center md:text-left z-10 order-1 md:order-2">
+              <h1 className="font-title text-[2.2rem] sm:text-4xl md:text-5xl lg:text-6xl leading-tight tracking-tighter uppercase mb-4" style={{ color: colors.magenta }}>
+                <span className="no-split drop-shadow-sm">PsychoCreative</span>
+              </h1>
+              <h2 className="font-title text-xl sm:text-2xl md:text-3xl leading-tight tracking-tight uppercase mb-6 text-gray-900 bg-white/40 inline-block px-2 rounded-lg">
+                Kreativitas yang Memahami dan <br className="hidden md:block"/> Menggerakkan Pikiran.
+              </h2>
+              <div className="font-body text-sm md:text-base text-gray-800 leading-relaxed mb-8 max-w-lg space-y-4">
+                <p>
+                  <strong style={{ color: colors.neonGreen }}>Trivium Creatives</strong> adalah konsultan yang membantu brand terhubung dengan audiensnya. Didirikan oleh tiga ahli strategi, kami menciptakan pengalaman brand yang menarik secara visual, menyentuh emosi, dan berdampak besar.
+                </p>
+                <p>
+                  Kami yakin setiap brand butuh lebih dari sekadar desain bagus. Mereka butuh solusi yang bisa terhubung secara mendalam dengan orang lain. Karena itu, kami menggabungkan desain, cerita, dan psikologi untuk membuat solusi yang kuat.
+                </p>
+              </div>
+              <div className="flex flex-col sm:flex-row gap-4 justify-center md:justify-start">
+                <a 
+                  href={whatsappUrl} 
+                  target="_blank" 
+                  className="px-10 py-4 font-title text-xl font-bold text-black rounded-full hover:scale-105 transition-transform shadow-lg text-center"
+                  style={{ backgroundColor: colors.neonGreen }}
+                >
+                  Mulai Konsultasi
+                </a>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Section 2: Tentang Kami */}
+        <section id="tentang" className="py-20 md:py-32 px-6 md:px-10 relative overflow-hidden bg-white">
+          <div 
+            className="absolute inset-0 z-0 pointer-events-none opacity-30 bg-cover bg-center bg-no-repeat"
+            style={{ backgroundImage: "url('https://i.postimg.cc/PxtXbV7T/Artboard-2.png')" }}
+          ></div>
+          
+          <div className="max-w-7xl mx-auto flex flex-col lg:flex-row gap-12 lg:gap-16 items-start relative z-10">
+            <div className="w-full lg:w-1/3 lg:sticky lg:top-32">
+              <h2 className="font-title text-4xl md:text-6xl uppercase leading-[0.95] tracking-tighter mb-4" style={{ color: colors.brightBlue }}>
+                Bukan <br/> sekadar <br/> kreatif <br/> <span className="text-magenta">tapi</span> <br/> 
+                <span className="relative inline-block text-magenta">
+                  Psycocreative!
+                  <span 
+                    className={`absolute -bottom-2 left-0 h-2 md:h-3 bg-yellow-400 z-[-1] ${isVisible ? 'animate-line-grow' : 'w-0'}`}
+                  ></span>
+                </span>
+              </h2>
+              
+              <div className="relative pl-6 py-2 mb-8 border-l-4 border-yellow-400">
+                <p className="font-body text-gray-700 italic text-lg md:text-xl leading-snug font-semibold">
+                  "Ide harus mampu menyusup ke pikiran dan menetap menjadi sebuah ingatan."
+                </p>
+              </div>
+
+              <div className={`box-reveal p-8 rounded-[2rem] bg-[#fffbeb]/90 border-2 border-black/5 hover:border-[#f72585] transition-all duration-500 group shadow-sm hover:shadow-2xl ${isVisible ? 'visible' : ''}`}>
+                  <div className="mb-6">
+                     <Puzzle size={40} className="text-yellow-600 transition-transform group-hover:rotate-12" />
+                  </div>
+                  <h3 className="font-title text-2xl md:text-3xl uppercase mb-4 tracking-tighter leading-tight">Solusi Personal, Bukan Templat</h3>
+                  <p className="font-body text-gray-500 text-base md:text-lg leading-relaxed">
+                    Setiap brand itu unik. Kami bekerja sama dengan Anda untuk menciptakan solusi yang benar-benar sesuai dan orisinal.
+                  </p>
+              </div>
+            </div>
+
+            <div className="w-full lg:w-2/3 grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
+              {[
+                { icon: Target, title: 'Mengapa "Trivium"?', desc: 'Karena ide saja tidak cukup. Ide harus dipahami dan berkesan. Kami memastikan ide Anda memberikan dampak nyata.', color: colors.magenta },
+                { icon: Lightbulb, title: 'Strategi & Kreativitas', desc: 'Ide kami bukan sekadar indah, tapi strategis. Setiap karya dibuat untuk mencapai tujuan bisnis Anda.', color: colors.neonGreen },
+                { icon: Users, title: 'Kekuatan Tiga Pilar', desc: 'Kami memiliki tiga pakar inti yang saling melengkapi didukung tim profesional untuk eksekusi yang efisien.', color: colors.magenta },
+                { icon: Brain, title: 'Psikologi Komunikasi', desc: 'Kami menciptakan pesan efektif berdasarkan cara kerja otak manusia untuk hasil yang maksimum.', color: colors.brightBlue }
+              ].map((item, idx) => (
+                <div 
+                  key={idx} 
+                  className={`box-reveal p-8 md:p-10 rounded-[2.5rem] bg-[#fffbeb]/90 border-2 border-black/5 hover:border-[#f72585] transition-all duration-500 group shadow-sm hover:shadow-2xl ${isVisible ? 'visible' : ''}`} 
+                  style={{ transitionDelay: `${idx * 100}ms` }}
+                >
+                  <div className="mb-6">
+                    <item.icon size={40} className="transition-transform group-hover:rotate-12" style={{ color: item.color }} />
+                  </div>
+                  <h3 className="font-title text-2xl md:text-3xl uppercase mb-4 tracking-tighter leading-tight">{item.title}</h3>
+                  <p className="font-body text-gray-500 text-base md:text-lg leading-relaxed">{item.desc}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* METODE KAMI */}
+        <section id="metode" className="relative py-24 md:py-32 overflow-hidden border-y border-gray-200">
+          <div className="absolute inset-0 z-0">
+            <img 
+              src="https://i.postimg.cc/Gm4nRwW3/shutterstock-2527222861.png" 
+              alt="Latar Belakang Metode" 
+              className="w-full h-full object-cover"
+            />
+          </div>
+          
+          <div className="absolute top-0 right-0 w-1/3 h-full line-accents opacity-20 z-0"></div>
+          <div className="absolute bottom-0 left-0 w-64 h-64 bg-dots opacity-10 z-0"></div>
+          
+          <div className="max-w-7xl mx-auto px-6 md:px-10 relative z-10">
+            <div className="flex flex-col md:flex-row items-stretch justify-between mb-16 md:mb-24 gap-8">
+              <div className="flex-1 bg-white/90 p-8 rounded-3xl shadow-xl">
+                <span className="font-title text-neonGreen text-sm md:text-base uppercase tracking-[0.4em] mb-4 block">Alur Kerja Kami</span>
+                
+                <div className="relative inline-block">
+                  <h2 className="font-title text-4xl md:text-7xl uppercase tracking-tighter leading-[0.9] mb-4 text-[#f72585]">
+                    Langkah <br/> <span className="italic">Kreatif Kami</span>
+                  </h2>
+                  <div 
+                    className={`h-2 md:h-3 bg-yellow-400 absolute bottom-0 left-0 ${isVisible ? 'animate-line-grow' : ''}`}
+                    style={{ transform: 'translateY(10px)' }}
+                  ></div>
+                </div>
+              </div>
+              
+              <div className="flex-1 flex items-center md:pl-10">
+                <p className="font-body text-lg md:text-2xl text-gray-900 font-semibold leading-relaxed border-l-4 border-magenta pl-6 py-2">
+                  Proses sistematis untuk menjangkau pikiran dan hati audiens Anda.
+                </p>
+              </div>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-10">
+              {methods.map((m, idx) => (
+                <div 
+                  key={idx} 
+                  className={`box-reveal method-card p-8 md:p-10 rounded-[2.5rem] bg-white/95 transition-all duration-500 group relative flex flex-col h-full shadow-2xl ${isVisible ? 'visible' : ''}`}
+                  style={{ transitionDelay: `${idx * 150}ms` }}
+                >
+                  <div 
+                    className="step-number absolute -top-4 -left-4 w-12 h-12 rounded-full flex items-center justify-center font-title text-xl text-white shadow-lg z-20"
+                    style={{ backgroundColor: m.color }}
+                  >
+                    {m.step}
+                  </div>
+
+                  <div className="mb-8 relative overflow-hidden">
+                     <div className="icon-container w-16 h-16 rounded-2xl flex items-center justify-center bg-white shadow-sm">
+                        <m.icon size={32} style={{ color: m.color }} />
+                     </div>
+                  </div>
+
+                  <h3 
+                    className="font-title text-2xl md:text-3xl uppercase mb-4 tracking-tight leading-tight group-hover:translate-x-1 transition-transform"
+                    style={{ color: m.color }}
+                  >
+                    {m.title}
+                  </h3>
+                  
+                  <p className="font-body text-gray-800 text-sm md:text-base leading-relaxed mb-8 flex-grow font-medium">
+                    {m.desc}
+                  </p>
+
+                  <div className="mt-auto space-y-2">
+                    <div className="h-[2px] w-0 group-hover:w-full mb-4 transition-all duration-700 ease-out" style={{ backgroundColor: m.color }}></div>
+                    <div className="flex flex-wrap gap-2 overflow-hidden">
+                      {m.tags.map((tag, tIdx) => (
+                        <span 
+                          key={tIdx} 
+                          className="text-[10px] md:text-xs font-title uppercase tracking-wider text-white px-3 py-1 rounded-full transform translate-y-0 group-hover:-translate-y-1 transition-transform"
+                          style={{ transitionDelay: `${tIdx * 100}ms`, backgroundColor: m.color }}
+                        >
+                          {tag}
+                        </span>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* SECTION 4: PORTFOLIO KREATIF */}
+        <section id="portfolio" className="py-24 md:py-32 bg-[#f9f7f2] relative overflow-hidden">
+          <div className="max-w-7xl mx-auto px-6 md:px-10 relative z-10">
+            <div className="flex flex-col md:flex-row justify-between items-center md:items-end mb-16 gap-8">
+              <div className="max-w-xl text-center md:text-left">
+                <span className="font-title text-magenta text-sm md:text-base uppercase tracking-[0.4em] mb-4 block">Portfolio</span>
+                <h2 className="font-title text-4xl md:text-6xl uppercase tracking-tighter leading-none mb-4">
+                  Eksplorasi <span className="text-green-600">Visual</span> & <span className="text-blue-500">Psikologi</span>
+                </h2>
+                <p className="font-body text-gray-600 text-base md:text-lg">Koleksi proyek pilihan yang menggabungkan estetika dengan strategi komunikasi yang berdampak.</p>
+              </div>
+
+              <div className="flex flex-wrap justify-center gap-2 md:gap-4">
+                {categories.map((cat) => (
+                  <button
+                    key={cat}
+                    onClick={() => setActiveCategory(cat)}
+                    className={`px-6 py-2 rounded-full font-title text-sm uppercase tracking-widest transition-all duration-300 border-2 ${
+                      activeCategory === cat 
+                        ? 'bg-black text-white border-black' 
+                        : 'bg-white text-gray-400 border-gray-100 hover:border-magenta hover:text-magenta'
+                    }`}
+                  >
+                    {cat}
+                  </button>
+                ))}
+              </div>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+              {filteredPortfolio.map((item, idx) => (
+                <div 
+                  key={item.id}
+                  className="portfolio-item group relative overflow-hidden rounded-[2rem] aspect-[4/5] bg-white shadow-xl hover:shadow-2xl transition-all duration-500 box-reveal visible"
+                  style={{ transitionDelay: `${idx * 100}ms` }}
+                >
+                  <img 
+                    src={item.img} 
+                    alt={item.name} 
+                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                  />
+                  
+                  <div className="portfolio-overlay absolute inset-0 bg-black/80 opacity-0 flex flex-col justify-end p-8 transition-opacity duration-500">
+                    <div className="transform translate-y-8 group-hover:translate-y-0 transition-transform duration-500 delay-100">
+                      <span className="font-title text-[10px] uppercase tracking-widest text-white/60 mb-2 block">{item.category}</span>
+                      <h3 className="font-title text-2xl md:text-3xl text-white uppercase leading-tight mb-3">{item.name}</h3>
+                      <p className="font-body text-white/80 text-sm mb-6 leading-relaxed">{item.desc}</p>
+                      <button className="flex items-center gap-2 text-white font-title text-sm uppercase tracking-widest border-b-2 border-magenta pb-1 hover:text-magenta transition-colors">
+                        Lihat Detail <ExternalLink size={16} />
+                      </button>
+                    </div>
+                  </div>
+                  
+                  <div className="absolute top-6 left-6 px-4 py-1 rounded-full bg-white/90 backdrop-blur-sm shadow-md font-title text-[10px] uppercase tracking-widest z-10">
+                    {item.category}
+                  </div>
+                </div>
+              ))}
+            </div>
+
+            <div className="mt-20 flex justify-center">
+              <a 
+                href={whatsappUrl} 
+                target="_blank" 
+                className="group flex items-center gap-4 px-10 py-5 bg-[#89c82c] rounded-full font-title text-xl uppercase tracking-tighter hover:bg-black hover:text-white transition-all duration-300 shadow-lg"
+              >
+                Mau project seperti ini?
+                <div className="w-8 h-8 rounded-full bg-white text-[#89c82c] flex items-center justify-center group-hover:bg-magenta group-hover:text-white transition-colors">
+                  <ArrowUpRight size={20} />
+                </div>
+              </a>
+            </div>
+          </div>
+        </section>
+
+        {/* FOOTER SIMPLE */}
+        <footer className="py-12 px-6 md:px-10 bg-white border-t border-gray-100 relative z-30">
+          <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-8">
+            
+            {/* Logo Section */}
+            <div className="flex flex-col items-center md:items-start gap-2">
+              <img 
+                src="https://i.postimg.cc/7PpGgmmh/trivium-logo.png" 
+                alt="Logo Trivium" 
+                className="h-10 md:h-12 w-auto grayscale hover:grayscale-0 transition-all duration-500" 
+              />
+              <p className="font-title text-[10px] uppercase tracking-widest text-gray-400">
+                PsychoCreative Studio
+              </p>
+            </div>
+
+            {/* Social & Contact Section */}
+            <div className="flex items-center gap-6">
+              <a 
+                href="https://instagram.com" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="w-12 h-12 rounded-full border border-gray-200 flex items-center justify-center text-gray-600 hover:bg-magenta hover:text-white hover:border-magenta transition-all duration-300 group"
+              >
+                <Instagram size={20} className="group-hover:scale-110" />
+              </a>
+              
+              <a 
+                href={whatsappUrl} 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="w-12 h-12 rounded-full border border-gray-200 flex items-center justify-center text-gray-600 hover:bg-[#25D366] hover:text-white hover:border-[#25D366] transition-all duration-300 group"
+              >
+                <MessageCircle size={20} className="group-hover:scale-110" />
+              </a>
+            </div>
+
+            {/* Copyright Section */}
+            <div className="text-center md:text-right">
+              <p className="font-title text-xs uppercase tracking-widest text-gray-500">
+                &copy; 2026 Trivium Creatives
+              </p>
+              <p className="font-body text-[10px] text-gray-400 mt-1">
+                Semua Hak Dilindungi.
+              </p>
+            </div>
+          </div>
+        </footer>
+      </main>
+    </div>
+  );
+};
+
+export default App;
